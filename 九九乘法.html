@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    .border {
+      border: 1px solid black;
+    }
+  </style>
+  <title>9*9</title>
+</head>
+<body>
+
+<script>
+  function multiply() {
+   /* document.write("availheight:"+screen.availHeight+"<br>"+
+        "availwidth"+screen.availWidth+"<br>"+screen.height+"<br>"+screen.width);*/
+    var table= document.createElement("table");
+    var body= document.getElementsByTagName("body")[0];
+    body.appendChild(table);
+    for(var i= 1 ; i < 10 ; i++) {
+      var tr= document.createElement("tr");
+      //将当前行插入表格table
+      table.appendChild(tr);
+      for(var j= 1 ; j <= i ; j++) {
+        var td= document.createElement("td");
+        td.className= "border";
+        var text=  i +"*"+ j + "=" + i*j ;
+        var td_text= document.createTextNode(text);
+        td.appendChild(td_text);
+        //将单元格插入当前行tr
+        tr.appendChild(td);
+      }
+    }
+  }
+
+function multiply2() {
+
+  document.write("<table>");
+  for(var i=9; i > 0 ; i--) {
+    document.write("<tr>");
+    //列的变化方式不变，都是一次遍历行数的个数
+    for(var j=1; j <= i ; j++) {
+      var text=  i +"*"+ j + "=" + i*j ;
+      document.write('<td style="'+ 'border:1px solid blue;' +'">' + text + '</td>');
+    }
+    document.write("</tr>");
+
+  }
+  document.write("</table>");
+
+}
+
+  //函数无效！，新生成的内容会替换原先生成的，而不会是叠加
+  function multiply3() {
+    var body= document.getElementsByTagName("body")[0];
+    body.innerHTML+="<table>";
+    for(var i=9; i > 0 ; i--) {
+      body.innerHTML+="<tr>";
+      //列的变化方式不变，都是一次遍历行数的个数
+      for(var j=1; j <= i ; j++) {
+        var text=  i +"*"+ j + "=" + i*j ;
+        var td_text= '<td style="'+ 'border:1px solid blue;' +'">' + text + '</td>'+'<br>';
+        body.innerHTML+= td_text;
+      }
+      body.innerHTML+="</tr>";
+
+    }
+    body.innerHTML+="</table>";
+  }
+  window.onload= function() {
+//    multiply();
+//    multiply2();
+    multiply3();
+  }
+</script>
+</body>
+</html>
